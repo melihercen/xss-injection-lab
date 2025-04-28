@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom XSS</title>
+</head>
+<body>
+    <nav>
+        <a href="reflected-xss.php">Reflected XSS</a> |
+        <a href="stored-xss.php">Stored XSS</a> |
+        <a href="dom-xss.html">DOM XSS</a> |
+        <a href="secure-page.php">Secure Page</a>
+    </nav>
+    <h1>DOM XSS Example</h1>
+    <p id="output">Enter a name in the url as ?name=yourname</p>
+    <script>
+        const urlParams= new URLSearchParams(window.location.search);
+        const name=urlParams.get('name');
+        if(name)
+        {
+        document.getElementById('output').innerHTML="Hello, " + name;
+        }
+    </script>
+    
+</body>
+</html>
